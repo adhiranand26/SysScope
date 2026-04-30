@@ -129,6 +129,8 @@
         if (data.disk && window.DiskPanel) window.DiskPanel.render(data.disk);
         if (data.system && window.SystemPanel) window.SystemPanel.render(data.system);
         if (data.network && window.NetworkPanel) window.NetworkPanel.render(data.network);
+        if (data.gpu && window.GpuPanel) window.GpuPanel.render(data.gpu);
+        if (data.battery && window.BatteryPanel) window.BatteryPanel.render(data.battery);
         if (data.alerts && window.AlertsPanel) window.AlertsPanel.render(data.alerts);
 
         // Update bottom bar alert count
