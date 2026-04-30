@@ -1,0 +1,8 @@
+spawn npx skills add https://github.com/leonxlnx/taste-skill --skill high-end-visual-design
+expect "Which agents do you want to install to?"
+send "\r"
+expect "Installation scope"
+send "\r"
+expect "Proceed with installation?"
+send "\r"
+expect eof

@@ -1,0 +1,6 @@
+spawn npx -y skills@1.5.3 add https://github.com/anthropics/skills --skill frontend-design
+expect "Which agents do you want to install to?"
+send "\r"
+expect "Installation scope"
+send "\r"
+expect eof

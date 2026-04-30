@@ -1,0 +1,148 @@
+<h2>btop/htop-Inspired Dashboard</h2>
+<p class="subtitle">Dense monospace layout with ASCII borders, amber accent, smooth charts inside panels</p>
+
+<div class="mockup">
+  <div class="mockup-header">Preview: System Monitor Dashboard</div>
+  <div class="mockup-body" style="padding:0;background:#1a1a1a;font-family:'Courier New',monospace;font-size:11px;color:#b0b0b0;line-height:1.4;">
+
+    <!-- Top bar -->
+    <div style="background:#222;padding:4px 12px;display:flex;justify-content:space-between;border-bottom:1px solid #333;">
+      <span style="color:#e8a020;font-weight:bold;">◉ SysScope</span>
+      <span>adhiranand@ubuntu · Linux 6.8.0 · up 4d 7h 23m</span>
+      <span style="color:#e8a020;">▲ Score: 87/100</span>
+    </div>
+
+    <div style="padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+
+      <!-- CPU Panel -->
+      <div style="border:1px solid #444;border-radius:2px;overflow:hidden;">
+        <div style="background:#252525;padding:3px 8px;border-bottom:1px solid #333;display:flex;justify-content:space-between;">
+          <span style="color:#e8a020;">┤ CPU ├</span>
+          <span>47.2% avg</span>
+        </div>
+        <div style="padding:8px;">
+          <div style="display:flex;gap:4px;margin-bottom:6px;">
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:10px;"><span>Core 0</span><span style="color:#e8a020;">62%</span></div>
+              <div style="height:6px;background:#2a2a2a;margin:2px 0;"><div style="height:100%;width:62%;background:linear-gradient(90deg,#e8a020,#f0b840);"></div></div>
+            </div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:10px;"><span>Core 1</span><span style="color:#e8a020;">38%</span></div>
+              <div style="height:6px;background:#2a2a2a;margin:2px 0;"><div style="height:100%;width:38%;background:linear-gradient(90deg,#e8a020,#f0b840);"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:4px;">
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:10px;"><span>Core 2</span><span style="color:#e8a020;">51%</span></div>
+              <div style="height:6px;background:#2a2a2a;margin:2px 0;"><div style="height:100%;width:51%;background:linear-gradient(90deg,#e8a020,#f0b840);"></div></div>
+            </div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:10px;"><span>Core 3</span><span style="color:#e8a020;">33%</span></div>
+              <div style="height:6px;background:#2a2a2a;margin:2px 0;"><div style="height:100%;width:33%;background:linear-gradient(90deg,#e8a020,#f0b840);"></div></div>
+            </div>
+          </div>
+          <!-- Mini sparkline area -->
+          <svg viewBox="0 0 200 30" style="width:100%;height:30px;margin-top:6px;">
+            <polyline points="0,25 15,22 30,18 45,20 60,15 75,18 90,12 105,16 120,10 135,14 150,8 165,12 180,6 200,10" fill="none" stroke="#e8a020" stroke-width="1.5"/>
+            <polyline points="0,25 15,22 30,18 45,20 60,15 75,18 90,12 105,16 120,10 135,14 150,8 165,12 180,6 200,10 200,30 0,30" fill="#e8a02015" stroke="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Memory Panel -->
+      <div style="border:1px solid #444;border-radius:2px;overflow:hidden;">
+        <div style="background:#252525;padding:3px 8px;border-bottom:1px solid #333;display:flex;justify-content:space-between;">
+          <span style="color:#e8a020;">┤ MEM ├</span>
+          <span>3.2G / 8.0G</span>
+        </div>
+        <div style="padding:8px;">
+          <div style="display:flex;height:20px;gap:1px;margin-bottom:6px;">
+            <div style="flex:3;background:#e8a020;display:flex;align-items:center;justify-content:center;font-size:9px;color:#1a1a1a;font-weight:bold;">USED 3.2G</div>
+            <div style="flex:1;background:#e8a02066;display:flex;align-items:center;justify-content:center;font-size:9px;">BUF 412M</div>
+            <div style="flex:1;background:#e8a02033;display:flex;align-items:center;justify-content:center;font-size:9px;">CACHE 89M</div>
+            <div style="flex:2;background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-size:9px;color:#555;">FREE 4.3G</div>
+          </div>
+          <div style="font-size:10px;color:#777;margin-bottom:4px;">SWAP: 128M / 2.0G ████░░░░░░░░ 6%</div>
+          <div style="font-size:10px;margin-top:4px;">
+            <div style="display:flex;justify-content:space-between;"><span>Page Faults</span><span style="color:#e8a020;">1,247/s</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Major Faults</span><span>3/s</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Dirty Pages</span><span>24 MB</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process List Panel (full width) -->
+      <div style="grid-column:1/-1;border:1px solid #444;border-radius:2px;overflow:hidden;">
+        <div style="background:#252525;padding:3px 8px;border-bottom:1px solid #333;display:flex;justify-content:space-between;">
+          <span style="color:#e8a020;">┤ PROCESSES ├</span>
+          <span>142 total · 2 running · 138 sleeping · 1 zombie</span>
+        </div>
+        <div style="padding:0;">
+          <div style="display:grid;grid-template-columns:50px 50px 70px 50px 50px 50px 1fr;padding:3px 8px;background:#222;font-size:10px;color:#e8a020;border-bottom:1px solid #333;">
+            <span>PID</span><span>PPID</span><span>STATE</span><span>%CPU</span><span>%MEM</span><span>THR</span><span>COMMAND</span>
+          </div>
+          <div style="font-size:10px;">
+            <div style="display:grid;grid-template-columns:50px 50px 70px 50px 50px 50px 1fr;padding:2px 8px;border-bottom:1px solid #2a2a2a;">
+              <span>1</span><span>0</span><span style="color:#4ade80;">S (sleeping)</span><span>0.1</span><span>0.8</span><span>1</span><span>systemd --system</span>
+            </div>
+            <div style="display:grid;grid-template-columns:50px 50px 70px 50px 50px 50px 1fr;padding:2px 8px;border-bottom:1px solid #2a2a2a;background:#e8a02008;">
+              <span style="color:#e8a020;">1567</span><span>891</span><span style="color:#e8a020;">R (running)</span><span style="color:#e8a020;">12.3</span><span>2.1</span><span>4</span><span style="color:#e8a020;">python3 server.py</span>
+            </div>
+            <div style="display:grid;grid-template-columns:50px 50px 70px 50px 50px 50px 1fr;padding:2px 8px;border-bottom:1px solid #2a2a2a;">
+              <span>342</span><span>1</span><span style="color:#4ade80;">S (sleeping)</span><span>0.3</span><span>0.4</span><span>1</span><span>systemd-journald</span>
+            </div>
+            <div style="display:grid;grid-template-columns:50px 50px 70px 50px 50px 50px 1fr;padding:2px 8px;border-bottom:1px solid #2a2a2a;">
+              <span style="color:#ef4444;">2891</span><span>1204</span><span style="color:#ef4444;">Z (zombie)</span><span>0.0</span><span>0.0</span><span>0</span><span style="color:#ef4444;">[defunct]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disk I/O Panel -->
+      <div style="border:1px solid #444;border-radius:2px;overflow:hidden;">
+        <div style="background:#252525;padding:3px 8px;border-bottom:1px solid #333;">
+          <span style="color:#e8a020;">┤ DISK I/O ├</span>
+        </div>
+        <div style="padding:8px;font-size:10px;">
+          <div style="margin-bottom:4px;">
+            <div style="display:flex;justify-content:space-between;"><span>sda  Read</span><span style="color:#e8a020;">45.2 MB/s</span></div>
+            <div style="height:4px;background:#2a2a2a;margin:2px 0;"><div style="height:100%;width:45%;background:#e8a020;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;"><span>sda  Write</span><span style="color:#e8a020;">12.8 MB/s</span></div>
+            <div style="height:4px;background:#2a2a2a;margin:2px 0;"><div style="height:100%;width:13%;background:#e8a02088;"></div></div>
+          </div>
+          <div style="margin-top:6px;color:#777;">/ · 42G/100G used (42%)</div>
+        </div>
+      </div>
+
+      <!-- System Info Panel -->
+      <div style="border:1px solid #444;border-radius:2px;overflow:hidden;">
+        <div style="background:#252525;padding:3px 8px;border-bottom:1px solid #333;">
+          <span style="color:#e8a020;">┤ SYSTEM ├</span>
+        </div>
+        <div style="padding:8px;font-size:10px;">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:2px 12px;">
+            <span style="color:#777;">Kernel</span><span>6.8.0-generic</span>
+            <span style="color:#777;">Distro</span><span>Ubuntu 24.04 LTS</span>
+            <span style="color:#777;">Uptime</span><span style="color:#e8a020;">4d 7h 23m 14s</span>
+            <span style="color:#777;">Load</span><span>1.24  0.98  0.76</span>
+            <span style="color:#777;">Host</span><span>adhiranand-vm</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom status bar -->
+    <div style="background:#222;padding:3px 12px;border-top:1px solid #333;display:flex;justify-content:space-between;font-size:10px;">
+      <span>⚠ <span style="color:#e8a020;">ALERT: CPU Core 0 > 60%</span></span>
+      <span style="color:#555;">Refresh: 1s · Press [q] quit · [h] help · [t] tree view</span>
+    </div>
+
+  </div>
+</div>
+
+<p style="margin-top:16px;color:#aaa;font-size:14px;">
+  <strong>Key design principles:</strong> Dense monospace grid · ASCII panel headers (┤ NAME ├) · #1a1a1a dark grey base · Single amber (#e8a020) accent · Real charts inside panels · Process table with state colors · btop-style stacked bar for memory · Keyboard shortcut hints in status bar
+</p>

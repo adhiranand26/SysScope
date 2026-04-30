@@ -1,0 +1,125 @@
+<h2>Which aesthetic direction for your OS Dashboard?</h2>
+<p class="subtitle">Click the one that feels right. Remember: NO generic AI slop — each of these has a strong, distinctive identity.</p>
+
+<div class="cards">
+
+  <!-- Option A: Retro Terminal -->
+  <div class="card" data-choice="retro-terminal" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #0a0a0a; padding: 24px; font-family: 'Courier New', monospace; border: 1px solid #00ff41;">
+      <div style="color: #00ff41; font-size: 11px; margin-bottom: 8px; opacity: 0.6;">adhiranand@ubuntu:~$ sysmon --dashboard</div>
+      <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+        <div style="flex:1; border: 1px solid #00ff4133; padding: 8px; border-radius: 2px;">
+          <div style="color: #00ff41; font-size: 9px; text-transform: uppercase; letter-spacing: 2px;">CPU</div>
+          <div style="color: #00ff41; font-size: 24px; font-weight: bold;">47.2%</div>
+          <div style="height: 4px; background: #00ff4122; margin-top: 4px;"><div style="height:100%; width:47%; background: #00ff41;"></div></div>
+        </div>
+        <div style="flex:1; border: 1px solid #00ff4133; padding: 8px; border-radius: 2px;">
+          <div style="color: #00ff41; font-size: 9px; text-transform: uppercase; letter-spacing: 2px;">MEM</div>
+          <div style="color: #00ff41; font-size: 24px; font-weight: bold;">3.2G</div>
+          <div style="height: 4px; background: #00ff4122; margin-top: 4px;"><div style="height:100%; width:62%; background: #00ff41;"></div></div>
+        </div>
+      </div>
+      <div style="color: #00ff4188; font-size: 10px; border-top: 1px solid #00ff4122; padding-top: 6px;">
+        PID  PPID  STATE  %CPU  COMMAND<br>
+        <span style="color:#00ff41">1    0     S      0.1   systemd</span><br>
+        <span style="color:#00ff41cc">├─ 342  1  S  0.0  systemd-journal</span><br>
+        <span style="color:#00ff41aa">├─ 891  1  S  0.3  python3</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Retro Terminal / CRT</h3>
+      <p>Phosphor green on black. Scanlines. Monospace everything. Feels like SSH'ing into a mainframe from the 80s. <strong>Bold, nerdy, unforgettable.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Instantly distinctive — no one else will have this</li><li>Perfect thematic fit (Linux, sysadmin, OS internals)</li><li>CRT effects + scanlines = memorable presentation</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Green-on-black can strain eyes over time</li><li>Harder to show complex charts (limited color palette)</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: Dark Cyberpunk -->
+  <div class="card" data-choice="dark-cyberpunk" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #0d0d1a 0%, #1a0a2e 100%); padding: 24px; border: 1px solid #7c3aed33;">
+      <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+        <div style="flex:1; background: linear-gradient(180deg, #7c3aed11 0%, #7c3aed05 100%); border: 1px solid #7c3aed33; padding: 10px; border-radius: 8px;">
+          <div style="color: #a78bfa; font-size: 10px; font-family: system-ui; text-transform: uppercase; letter-spacing: 1px;">CPU Load</div>
+          <div style="color: #e2d9f3; font-size: 28px; font-weight: 700; font-family: system-ui;">47.2<span style="font-size:14px; color:#a78bfa;">%</span></div>
+          <div style="display:flex; gap:2px; margin-top:6px;">
+            <div style="flex:1;height:16px;background:#7c3aed;border-radius:2px;"></div>
+            <div style="flex:1;height:16px;background:#6d28d9;border-radius:2px;"></div>
+            <div style="flex:1;height:16px;background:#7c3aed44;border-radius:2px;"></div>
+            <div style="flex:1;height:16px;background:#7c3aed22;border-radius:2px;"></div>
+          </div>
+          <div style="color:#a78bfa88;font-size:9px;margin-top:4px;font-family:system-ui;">Core 0 · Core 1 · Core 2 · Core 3</div>
+        </div>
+        <div style="flex:1; background: linear-gradient(180deg, #06b6d411 0%, #06b6d405 100%); border: 1px solid #06b6d433; padding: 10px; border-radius: 8px;">
+          <div style="color: #67e8f9; font-size: 10px; font-family: system-ui; text-transform: uppercase; letter-spacing: 1px;">Memory</div>
+          <div style="color: #e2f5f9; font-size: 28px; font-weight: 700; font-family: system-ui;">3.2<span style="font-size:14px; color:#67e8f9;">GB</span></div>
+          <div style="height:6px;background:#06b6d422;border-radius:3px;margin-top:8px;"><div style="height:100%;width:62%;background:linear-gradient(90deg,#06b6d4,#22d3ee);border-radius:3px;"></div></div>
+        </div>
+      </div>
+      <div style="background:#ffffff05; border:1px solid #ffffff11; border-radius:6px; padding:8px; font-family:system-ui;">
+        <div style="display:flex;justify-content:space-between;color:#ffffff44;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+          <span>Process</span><span>State</span><span>CPU</span>
+        </div>
+        <div style="color:#e2e8f0;font-size:11px;">
+          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #ffffff08;"><span>systemd</span><span style="color:#4ade80;">● running</span><span>0.1%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>python3</span><span style="color:#fbbf24;">◉ sleeping</span><span>2.3%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Dark Cyberpunk / Neon</h3>
+      <p>Deep indigo/violet background with electric cyan + purple accents. Glowing edges, neon data. Feels like a sci-fi control room. <strong>Modern, striking, premium.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Supports rich color coding for different data types</li><li>Modern + visually impressive for presentations</li><li>Easy to differentiate CPU/MEM/Disk with distinct neon hues</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More common "dark dashboard" aesthetic (needs execution to stand out)</li><li>Can feel overdesigned if not restrained</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option C: Blueprint / Engineering -->
+  <div class="card" data-choice="blueprint" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #0a1628; padding: 24px; background-image: linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px); background-size: 20px 20px; border: 1px solid #1e3a5f;">
+      <div style="display:flex;gap:12px;margin-bottom:12px;">
+        <div style="flex:1; border: 1px dashed #3b82f644; padding: 10px; border-radius: 4px; position:relative;">
+          <div style="position:absolute;top:-8px;left:8px;background:#0a1628;padding:0 4px;color:#60a5fa;font-size:9px;font-family:'Courier New',monospace;text-transform:uppercase;letter-spacing:2px;">CPU Utilization</div>
+          <div style="color: #93c5fd; font-size: 32px; font-weight: 300; font-family: 'Courier New', monospace; margin-top:4px;">47.2%</div>
+          <svg viewBox="0 0 200 40" style="width:100%;height:40px;margin-top:4px;">
+            <polyline points="0,30 20,28 40,22 60,25 80,18 100,20 120,15 140,22 160,18 180,12 200,16" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+            <polyline points="0,30 20,28 40,22 60,25 80,18 100,20 120,15 140,22 160,18 180,12 200,16" fill="url(#grad)" stroke="none"/>
+            <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f644"/><stop offset="100%" stop-color="#3b82f600"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div style="flex:1; border: 1px dashed #3b82f644; padding: 10px; border-radius: 4px; position:relative;">
+          <div style="position:absolute;top:-8px;left:8px;background:#0a1628;padding:0 4px;color:#60a5fa;font-size:9px;font-family:'Courier New',monospace;text-transform:uppercase;letter-spacing:2px;">Memory Map</div>
+          <div style="display:flex;gap:2px;margin-top:8px;">
+            <div style="flex:3;height:24px;background:#3b82f6;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#0a1628;font-size:8px;font-family:monospace;">USED</div>
+            <div style="flex:1;height:24px;background:#60a5fa44;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#60a5fa;font-size:8px;font-family:monospace;">CACHE</div>
+            <div style="flex:1;height:24px;background:#60a5fa22;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#60a5fa88;font-size:8px;font-family:monospace;">BUF</div>
+            <div style="flex:2;height:24px;background:#1e3a5f44;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#60a5fa44;font-size:8px;font-family:monospace;">FREE</div>
+          </div>
+          <div style="color:#60a5fa88;font-size:9px;margin-top:6px;font-family:monospace;">3.2G / 8G · 412M cached · 89M buffers</div>
+        </div>
+      </div>
+      <div style="border:1px dashed #3b82f633;padding:6px;border-radius:4px;position:relative;">
+        <div style="position:absolute;top:-8px;left:8px;background:#0a1628;padding:0 4px;color:#60a5fa;font-size:9px;font-family:'Courier New',monospace;text-transform:uppercase;letter-spacing:2px;">Process Tree</div>
+        <div style="color:#93c5fd;font-size:10px;font-family:'Courier New',monospace;margin-top:4px;">
+          init(1)<br>
+          <span style="color:#60a5fa88;">├──</span> systemd-journald(342)<br>
+          <span style="color:#60a5fa88;">├──</span> sshd(891)<br>
+          <span style="color:#60a5fa88;">│   └──</span> <span style="color:#93c5fd;">bash(1204)</span><br>
+          <span style="color:#60a5fa88;">│       └──</span> <span style="color:#60a5fa;">python3(1567)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Blueprint / Engineering Schematic</h3>
+      <p>Deep navy with blueprint grid. Dashed borders, monospace labels, schematic annotation style. Feels like reading engineering drawings of your OS. <strong>Academic, technical, deeply thematic.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Perfectly fits "OS internals" educational context</li><li>Blueprint grid + dashed borders = unique, never seen in dashboards</li><li>Professor will see engineering intentionality, not just a "pretty UI"</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Monospace-heavy can feel dense</li><li>Needs careful spacing to stay readable</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>
