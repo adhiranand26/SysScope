@@ -228,27 +228,47 @@
         const content = document.getElementById('modal-content');
 
         content.innerHTML = `
-            <h3>┤ PID ${proc.pid} — ${proc.name} ├</h3>
-            <div class="kv-grid mb-8">
-                <span class="kv-key">Command</span><span class="kv-val">${proc.cmd}</span>
+            <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom: 20px;">
+                <div>
+                    <h2 style="margin:0; font-size:24px; color:var(--text-bright)">${proc.name}</h2>
+                    <span class="text-dim">Process ID: ${proc.pid} · Parent: ${proc.ppid}</span>
+                </div>
+                <div class="state-${proc.state}" style="padding: 4px 10px; border-radius: 4px; border: 1px solid currentColor; font-size: 12px; text-transform: uppercase;">
+                    ${proc.state}
+                </div>
+            </div>
+
+            <div class="kv-grid mb-8" style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                <span class="kv-key">Binary Path</span><span class="kv-val" style="word-break:break-all; font-family:monospace; font-size:12px;">${proc.exe}</span>
+                <span class="kv-key">Full Command</span><span class="kv-val" style="word-break:break-all; font-family:monospace; font-size:12px; color:var(--text-dim)">${proc.full_cmd}</span>
                 <span class="kv-key">User</span><span class="kv-val">${proc.user}</span>
-                <span class="kv-key">State</span><span class="kv-val state-${proc.state}">${proc.state}</span>
-                <span class="kv-key">CPU</span><span class="kv-val">${proc.cpu}%</span>
-                <span class="kv-key">Memory</span><span class="kv-val">${proc.mem}%</span>
-                <span class="kv-key">Threads</span><span class="kv-val">${proc.threads}</span>
-                <span class="kv-key">Nice</span><span class="kv-val">${proc.nice}</span>
+                <span class="kv-key">Resources</span><span class="kv-val">${proc.cpu}% CPU · ${proc.mem}% RAM · ${proc.threads} Threads</span>
+                <span class="kv-key">Priority (Nice)</span><span class="kv-val">${proc.nice}</span>
             </div>
-            <div class="modal-actions">
-                <button class="btn-kill" onclick="SysScope.killProcess(${proc.pid}, 'SIGTERM')">SIGTERM</button>
-                <button class="btn-kill" onclick="SysScope.killProcess(${proc.pid}, 'SIGKILL')">SIGKILL</button>
+
+            <div style="margin-bottom: 24px;">
+                <label class="stat-label" style="display:block; margin-bottom: 8px;">Change Priority (Nice)</label>
+                <div style="display:flex; align-items:center; gap:15px;">
+                    <input type="range" class="nice-slider" min="-20" max="19" value="${proc.nice}" style="flex:1"
+                        oninput="document.getElementById('nice-val-modal').textContent=this.value"
+                        onchange="SysScope.reniceProcess(${proc.pid}, parseInt(this.value))">
+                    <span id="nice-val-modal" style="width:30px; text-align:center; font-weight:bold;">${proc.nice}</span>
+                </div>
             </div>
-            <div class="mb-4">
-                <span class="stat-label">Nice Value: <span id="nice-display">${proc.nice}</span></span>
-                <input type="range" class="nice-slider" min="-20" max="19" value="${proc.nice}"
-                    oninput="document.getElementById('nice-display').textContent=this.value"
-                    onchange="SysScope.reniceProcess(${proc.pid}, parseInt(this.value))">
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                <button class="btn-kill" style="background: rgba(255, 107, 107, 0.1); border: 1px solid #ff6b6b; color: #ff6b6b; padding: 12px; border-radius: 6px; cursor: pointer;" 
+                        onclick="SysScope.killProcess(${proc.pid}, 'SIGTERM')">
+                    Terminate (SIGTERM)
+                </button>
+                <button class="btn-kill" style="background: #ff6b6b; border: 1px solid #ff6b6b; color: white; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;" 
+                        onclick="SysScope.killProcess(${proc.pid}, 'SIGKILL')">
+                    Force Kill (SIGKILL)
+                </button>
             </div>
-            <button class="btn-close" onclick="document.getElementById('process-modal').classList.add('hidden')">
+
+            <button class="btn-close" style="width:100%; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-dim); padding: 10px; border-radius: 6px; cursor: pointer;"
+                    onclick="document.getElementById('process-modal').classList.add('hidden')">
                 Close [Esc]
             </button>
         `;

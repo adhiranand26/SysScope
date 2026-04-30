@@ -12,7 +12,7 @@ STATE_MAP = {
 
 ATTRS = [
     "pid", "ppid", "name", "status", "cpu_percent",
-    "memory_percent", "num_threads", "cmdline", "username", "nice",
+    "memory_percent", "num_threads", "cmdline", "username", "nice", "exe"
 ]
 
 def collect_processes() -> dict:
@@ -33,7 +33,11 @@ def collect_processes() -> dict:
                 state_counts["other"] += 1
 
             cmdline = info.get("cmdline")
-            cmd = " ".join(cmdline[:4]) if cmdline else (info["name"] or "")
+            # Truncated cmd for the small table
+            cmd_short = " ".join(cmdline[:4]) if cmdline else (info["name"] or "")
+            # Full cmd for the modal
+            cmd_full = " ".join(cmdline) if cmdline else (info["name"] or "")
+            exe_path = info.get("exe") or "Unknown"
 
             procs.append({
                 "pid": info["pid"],
@@ -44,12 +48,15 @@ def collect_processes() -> dict:
                 "mem": round(info["memory_percent"] or 0, 1),
                 "threads": info["num_threads"] or 0,
                 "nice": info["nice"] if info["nice"] is not None else 0,
-                "cmd": cmd,
+                "cmd": cmd_short,
+                "full_cmd": cmd_full,
+                "exe": exe_path,
                 "user": info["username"] or "",
             })
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             continue
 
+    # Sort by CPU usage by default
     procs.sort(key=lambda x: x["cpu"], reverse=True)
 
     return {
