@@ -1,7 +1,12 @@
 import asyncio
 import json
 import time
+import os
+from dotenv import load_dotenv
 from contextlib import asynccontextmanager
+
+# Load environment variables from parent directory .env
+load_dotenv(dotenv_path="../.env")
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -17,6 +22,35 @@ from collectors.battery import collect_battery
 from collectors.score import calc_score
 from alerts import check_alerts
 from controllers.process_control import kill_process, renice_process
+import httpx
+
+async def call_inception_api(prompt: str):
+    """Call the Inception AI API."""
+    api_key = os.getenv("INCEPTION_API_KEY")
+    if not api_key:
+        return {"error": "INCEPTION_API_KEY not found in environment"}
+
+    url = "https://api.inceptionlabs.ai/v1/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+    payload = {
+        "model": "mercury-2",
+        "messages": [
+            {"role": "user", "content": prompt}
+        ],
+        "reasoning_effort": "instant",
+        "temperature": 0.75,
+        "max_tokens": 8192
+    }
+
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.post(url, headers=headers, json=payload, timeout=30.0)
+            return response.json()
+        except Exception as e:
+            return {"error": str(e)}
 
 # Connected WebSocket clients
 clients: list[WebSocket] = []
@@ -117,6 +151,11 @@ async def handle_command(ws: WebSocket, message: str):
         elif action == "resume":
             paused = False
             result = {"action": "resume", "success": True}
+
+        elif action == "ai_chat":
+            prompt = cmd.get("prompt", "What is a diffusion model?")
+            api_response = await call_inception_api(prompt)
+            result = {"action": "ai_chat", "response": api_response}
 
         else:
             result = {"error": f"Unknown action: {action}"}
